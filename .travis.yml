@@ -14,3 +14,23 @@ script:
 
 after_success:
   - echo "Test Success"
+
+deploy:
+  edge: true
+  # 외부 서비스
+  provider: elasticbeanstalk
+  # AWS 위치
+  region: ap-northeast-1
+  # 생성 어플 이름
+  app: docker-react-app
+  # AWS에 나와있는 이름
+  env: DockerReactApp-env
+  # S3 버킷 이름
+  bucket_name: elasticbeanstalk-ap-northeast-1-682796389167
+  # 어플 이름과 동일
+  bucket_path: docker-react-app
+  # 깃헙 브랜치
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
